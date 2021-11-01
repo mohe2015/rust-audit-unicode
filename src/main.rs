@@ -3,10 +3,7 @@ use std::fs;
 use walkdir::{DirEntry, WalkDir};
 
 fn is_hidden(entry: &DirEntry) -> bool {
-    entry.file_name()
-         .to_str()
-         .map(|s| s.starts_with("."))
-         .unwrap_or(false)
+    entry.path().to_string_lossy().starts_with("/etc/nixos/nixpkgs/.git")
 }
 
 fn main() { 
@@ -99,5 +96,5 @@ fn main() {
         }
     }
 
-    println!("{}", "а".escape_unicode());
+    println!("example: {}", "а".escape_unicode());
 }
